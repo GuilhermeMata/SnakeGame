@@ -6,7 +6,11 @@ const audio = new Audio('../assets/audio.mp3')
 const size = 30
 
 const snake = [
-               { x: 270, y: 240 }]
+               { x: 270, y: 240 },
+               { x: 300, y: 240 },
+               { x: 330, y: 240 },
+               { x: 360, y: 240 }
+]
 
 const randomNumber = (min , max) => {
     return Math.round(Math.random() * (max - min) + min)
@@ -126,6 +130,25 @@ const CheckEat = () => {
     }
 }
 
+const CheckCollision = () => {
+    const head = snake[snake.length - 1]
+    const canvasLimit = canvas.width - size
+    const neckIndex = snake.length - 2
+    const wallCollision = 
+        head.x < 0 || head.x > 570 || head.y < 0 || head.y > 570
+
+
+    const selfCollision = snake .find((position, index) => {
+        return index < neckIndex && position.x == head.x && position.y == head.y
+    })
+        
+    if (wallCollision || selfCollision) {
+        alert("Fim de Jogo")
+    }
+}
+
+
+
 
 const GameLoop = () => {
     clearInterval(loopId)
@@ -136,6 +159,7 @@ const GameLoop = () => {
     MoveSnake()
     DrawSnake()
     CheckEat()
+    CheckCollision()
 
     loopId = setTimeout(() => {
             GameLoop()
