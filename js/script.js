@@ -1,7 +1,7 @@
 const canvas = document.querySelector("canvas")
 const ctx = canvas.getContext("2d")
 
-const h1 = document.querySelector("h1")
+
 
 const size = 30
 
@@ -27,7 +27,6 @@ const randomColor = () => {
 
 }
 
-h1.innerText = randomColor()
 
 const food =  {
     x: randomPosition(0, 570),
@@ -107,6 +106,19 @@ const DrawGrid = () => {
 DrawGrid()
 
 
+const CheckEat = () => {
+    const head = snake[snake.length - 1]
+
+    if (head.x == food.x && head.y == food.y) {
+        snake.push(head)
+
+        food.x = randomPosition(),
+        food.y = randomPosition(),
+        food.color = randomColor()
+    }
+}
+
+
 const GameLoop = () => {
     clearInterval(loopId)
 
@@ -115,30 +127,29 @@ const GameLoop = () => {
     DrawFood()
     MoveSnake()
     DrawSnake()
+    CheckEat()
 
     loopId = setTimeout(() => {
             GameLoop()
-        }, 300)
+        }, 180)
 }
 
 GameLoop()
 
 document.addEventListener("keydown", ({ key }) => {
-    if (key == "ArrowRight" && direction !== "left") {
+    if (key == "ArrowRight" && direction != "left") {
         direction = "right"
     }
 
-    if (key == "ArrowLeft" && direction !== "right") {
+    if (key == "ArrowLeft" && direction != "right") {
         direction = "left"
     }
 
-    if (key == "ArrowDown" && direction !== "up") {
+    if (key == "ArrowDown" && direction != "up") {
         direction = "down"
     }
 
-    if (key == "ArrowUp" && direction !== "Down") {
+    if (key == "ArrowUp" && direction != "down") {
         direction = "up"
     }
-
-    
 })
