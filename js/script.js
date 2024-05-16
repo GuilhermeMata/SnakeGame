@@ -10,12 +10,14 @@ const audio = new Audio("../assets/audio.mp3");
 
 const size = 30;
 
-const snake = [
+const initialPosition = [
     { x: 270, y: 240 },
     { x: 300, y: 240 },
     { x: 330, y: 240 },
     { x: 360, y: 240 }
 ];
+
+let snake = [...initialPosition]
 
 const incrementScore = () => {
     score.innerText = +score.innerText + 10;
@@ -196,4 +198,6 @@ buttonPlay.addEventListener("click", () => {
     score.innerText = "00";
     menu.style.display = "none";
     canvas.style.filter = "none";
+
+    snake = [...initialPosition]
 });
