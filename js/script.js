@@ -123,6 +123,7 @@ const CheckEat = () => {
     const head = snake[snake.length - 1]
 
     if (head.x == food.x && head.y == food.y) {
+        incrementScore()
         snake.push(head)
         audio.play()
 
@@ -143,8 +144,9 @@ const CheckCollision = () => {
     const head = snake[snake.length - 1]
     const canvasLimit = canvas.width - size
     const neckIndex = snake.length - 2
+
     const wallCollision = 
-        head.x < 0 || head.x > 570 || head.y < 0 || head.y > 570
+        head.x < 0 || head.x > canvasLimit || head.y < 0 || head.y > canvasLimit
 
 
     const selfCollision = snake .find((position, index) => {
@@ -152,7 +154,7 @@ const CheckCollision = () => {
     })
         
     if (wallCollision || selfCollision) {
-        alert("Fim de Jogo")
+        gameOver("Fim de Jogo")
     }
 }
 
@@ -200,3 +202,10 @@ document.addEventListener("keydown", ({ key }) => {
         direction = "up"
     }
 })
+
+    buttonPlay.addEventListener("click", () => {
+        score.innerText = "00"
+        menu.style.display = "none"
+        canvas.style.filter = "none"
+
+    })
