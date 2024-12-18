@@ -1,20 +1,74 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
 }
 
 body {
-    background-color: #191919;
+    font-family: Arial, Helvetica, sans-serif;
     display: flex;
     min-height: 100vh;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     color: white;
+}
+
+a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+}
+
+
+.button {
+    background-color: #322aa6;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+    margin: 20px;
+    text-decoration: none; 
+}
+
+.button:hover {
+    background-color: #45a049;
+}
+
+.button:focus {
+    outline: none;
+    box-shadow: 0 0 5px 2px rgba(0, 128, 0, 0.6);
+}
+
+
+header {
+    background-image: url(/midia/azul-e-branco-tecnologia-abstrata-fundo-com-hexagonos-vetor.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+}
+
+header .logo-container {
+    display: flex;
+    position: absolute;
+    right: 20px;
+}
+
+header li {
+    display: inline;
+}
+
+header img {
+    max-width: 230px;
+    height: auto;
 }
 
 canvas {
@@ -26,6 +80,7 @@ canvas {
     flex-direction: column;
     align-items: center;
     font-size: 1.8rem;
+    color: black;
 }
 
 .score--value {
